@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teatro alla Scala</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+:root {
+  --rosso: #8b0000;
+  --oro: #d4af37;
+  --bianco: #ffffff;
+  --nero: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Playfair Display", serif;
+  background-image: url("https://images.unsplash.com/photo-1582152492243-a32086530356?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: var(--rosso);
+  border-radius: 20px;
+  padding: 30px 20px;
+  border: 2px solid var(--oro);
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card.dark {
+  background: var(--nero);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 26px;
+  margin: 0;
+  color: var(--oro);
+}
+
+.language-toggle {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.language-toggle span {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: var(--rosso);
+  color: var(--bianco);
+  font-weight: 700;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.btn {
+  display: block;
+  background: var(--bianco);
+  color: var(--rosso);
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  background: var(--oro);
+  color: var(--rosso);
+}
+
+.darkmode-btn {
+  margin-top: 20px;
+  border: none;
+  padding: 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  background: var(--rosso);
+  color: var(--bianco);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.darkmode-btn:hover {
+  background: var(--oro);
+  color: var(--rosso);
+}
+
+footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer a {
+  color: var(--bianco);
+  font-size: 28px;
+}
+
+footer a:hover {
+  color: var(--oro);
+}
+</style>
+</head>
+
+<body>
+
+<main class="card" id="card">
+
+  <header>
+    <h1>Teatro alla Scala</h1>
+    <div class="language-toggle">
+      <span id="it-btn">🇮🇹</span>
+      <span id="en-btn">🇬🇧</span>
+    </div>
+  </header>
+
+  <div class="links">
+    <a class="btn" id="info-btn" href="https://www.teatroallascala.org/info-per-gli-spettatori/informazioni-per-gli-spettatori.html" target="_blank" rel="noopener">ℹ️ Informazioni</a>
+    <a class="btn" id="tickets-btn" href="https://www.teatroallascala.org/it/stagione/biglietteria/biglietti.html" target="_blank" rel="noopener">🎟️ Biglietti</a>
+    <a class="btn" id="events-btn" href="https://www.teatroallascala.org/it/stagione/2025-2026/index.html" target="_blank" rel="noopener">🎭 Eventi</a>
+    <a class="btn" id="jobs-btn" href="https://www.teatroallascala.org/it/il-teatro/lavora-con-noi.html" target="_blank" rel="noopener">💼 Lavora con noi</a>
+    <a class="btn" id="location-btn" href="https://www.google.com/maps/search/Teatro+alla+Scala+Milano" target="_blank" rel="noopener">📍 Posizione</a>
+  </div>
+
+  <button class="darkmode-btn" id="darkBtn">🌙 Dark Mode</button>
+
+  <footer>
+    <a href="https://www.instagram.com/teatroallascala/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/teatro.alla.scala/?locale=it_IT" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://x.com/teatroallascala" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
+  </footer>
+
+</main>
+
+<script>
+const darkBtn = document.getElementById("darkBtn");
+const card = document.getElementById("card");
+
+darkBtn.addEventListener("click", () => {
+  card.classList.toggle("dark");
+  darkBtn.textContent = card.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+});
+
+const itBtn = document.getElementById("it-btn");
+const enBtn = document.getElementById("en-btn");
+
+const links = {
+  info: document.getElementById("info-btn"),
+  tickets: document.getElementById("tickets-btn"),
+  events: document.getElementById("events-btn"),
+  jobs: document.getElementById("jobs-btn"),
+  location: document.getElementById("location-btn")
+};
+
+const textContent = {
+  it: { info:"ℹ️ Informazioni", tickets:"🎟️ Biglietti", events:"🎭 Eventi", jobs:"💼 Lavora con noi", location:"📍 Posizione" },
+  en: { info:"ℹ️ Information", tickets:"🎟️ Tickets", events:"🎭 Shows", jobs:"💼 Work with us", location:"📍 Location" }
+};
+
+itBtn.addEventListener("click", () => {
+  links.info.href = "https://www.teatroallascala.org/info-per-gli-spettatori/informazioni-per-gli-spettatori.html";
+  links.tickets.href = "https://www.teatroallascala.org/it/stagione/biglietteria/biglietti.html";
+  links.events.href = "https://www.teatroallascala.org/it/stagione/2025-2026/index.html";
+  links.jobs.href = "https://www.teatroallascala.org/it/il-teatro/lavora-con-noi.html";
+  links.location.href = "https://www.google.com/maps/search/Teatro+alla+Scala+Milano";
+  for (let key in textContent.it) links[key].textContent = textContent.it[key];
+});
+
+enBtn.addEventListener("click", () => {
+  links.info.href = "https://www.teatroallascala.org/en/info-for-visitors.html";
+  links.tickets.href = "https://www.teatroallascala.org/en/season/tickets.html";
+  links.events.href = "https://www.teatroallascala.org/en/season/2025-2026/index.html";
+  links.jobs.href = "https://www.teatroallascala.org/en/the-theatre/work-with-us.html";
+  links.location.href = "https://www.google.com/maps/search/Teatro+alla+Scala+Milano";
+  for (let key in textContent.en) links[key].textContent = textContent.en[key];
+});
+</script>
+
+</body>
+</html>
